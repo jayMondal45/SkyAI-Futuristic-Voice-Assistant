@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyAI - Futuristic Login & Signup</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <div class="container" id="container">
+    <!-- Login Section -->
+    <div class="form-container sign-in">
+      <form id="login-form">
+        <h1>Log In to SkyAI</h1>
+        <div class="input-group">
+          <input type="email" id="login-email" placeholder="Email" required>
+          <label for="login-email">Email</label>
+          <span class="icon">✉️</span>
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Password" required>
+          <label for="login-password">Password</label>
+          <span class="icon">🔒</span>
+        </div>
+        <span style="color: #fff; font-size: 14px;">New here? <a href="#" style="margin-left: 3px; font-size: 14px;"
+            id="login">Create an account today!</a></span>
+        <button type="submit">LogIn</button>
+      </form>
+    </div>
+
+    <!-- Signup Section -->
+    <div class="form-container sign-up">
+      <form id="signup-form">
+        <h1>Create Account</h1>
+        <div class="input-group">
+          <input type="text" id="signup-name" placeholder="Full Name" required>
+          <label for="signup-name">Full Name</label>
+          <span class="icon">👤</span>
+        </div>
+        <div class="input-group">
+          <input type="email" id="signup-email" placeholder="Email" required>
+          <label for="signup-email">Email</label>
+          <span class="icon">✉️</span>
+        </div>
+        <div class="input-group">
+          <input type="password" id="signup-password" placeholder="Password" required>
+          <label for="signup-password">Password</label>
+          <span class="icon">🔒</span>
+        </div>
+        <span style="color: #fff; font-size: 14px;">Already part of the family? <a href="#"
+            style="margin-left: 3px; font-size: 14px;" id="register">Login</a></span>
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+
+    <!-- Toggle Container -->
+    <div class="toggle-container">
+      <div class="toggle">
+        <!-- Toggle Left (Login) -->
+        <div class="toggle-panel toggle-left">
+          <h1>Welcome Back!</h1>
+          <p>Enter your personal details to use all SkyAI features</p>
+          <button class="hidden" id="login" style="display: none;">Sign In</button>
+        </div>
+
+        <!-- Toggle Right (Signup) -->
+        <div class="toggle-panel toggle-right">
+          <h1>Hello, Friend!</h1>
+          <p>Register with your personal details to use all SkyAI features</p>
+          <button class="hidden" id="register" style="display: none;">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/login.js"></script>
+  <script>
+    // Handle form submission
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get email and password
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      // Simulate a successful login (no actual validation for this example)
+      localStorage.setItem('isLoggedIn', 'true'); // Store login state
+      localStorage.setItem('email', email); // Store email (optional)
+
+      // Redirect to home.html
+      window.location.href = 'home.html';
+    });
+  </script>
+</body>
+
+</html>

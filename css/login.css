@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0c29;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 900px;
+    max-width: 100%;
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 15px 0;
+    color: #fff;
+}
+
+.container a {
+    color: #00bcd4;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+    transition: color 0.3s;
+}
+
+.container a:hover {
+    color: #0097a7;
+}
+
+.container button {
+    background-color: #00bcd4;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+}
+
+.container button:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+}
+
+.container form {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+    width: 100%;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.input-group input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 12px 15px 12px 40px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.input-group input::placeholder {
+    color: transparent;
+}
+
+.input-group input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group.active label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: #00bcd4;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.input-group .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.input-group input:focus~.icon {
+    color: #00bcd4;
+}
+
+/* Form Containers */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    z-index: 1;
+    /* Lower z-index initially */
+    opacity: 0;
+    /* Hidden initially */
+    transform: translateX(100%);
+    /* Move to the right */
+}
+
+.sign-up {
+    left: 0;
+    z-index: 2;
+    /* Higher z-index initially */
+    opacity: 1;
+    /* Visible initially */
+    transform: translateX(0);
+    /* Reset transform */
+}
+
+/* Active State */
+.container.active .sign-in {
+    transform: translateX(1);
+    /* Move to the center */
+    opacity: 1;
+    /* Show Sign In form */
+    z-index: 2;
+    /* Bring to the front */
+}
+
+.container.active .sign-up {
+    transform: translateX(-100%);
+    /* Move to the left */
+    opacity: 0;
+    /* Hide Sign Up form */
+    z-index: 1;
+    /* Send to the back */
+}
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background: linear-gradient(to right, #00bcd4, #0097a7);
+    height: 100%;
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right {
+    transform: translateX(200%);
+}
+
+.container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 188, 212, 0.4);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 100%;
+        height: 100%;
+        position: static;
+        transform: none;
+        opacity: 1;
+    }
+
+    .sign-in {
+        display: none;
+    }
+
+    .sign-up {
+        display: flex;
+    }
+
+    .toggle-container {
+        display: none;
+    }
+
+    .container.active .sign-in {
+        display: flex;
+        transform: none;
+        opacity: 1;
+    }
+
+    .container.active .sign-up {
+        display: none;
+        transform: none;
+        opacity: 0;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .container button {
+        padding: 10px 40px;
+    }
+
+    .input-group input {
+        padding: 10px 15px 10px 40px;
+    }
+
+    .input-group label {
+        left: 40px;
+    }
+
+    .input-group.active label {
+        left: 10px;
+    }
+}
